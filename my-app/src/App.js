@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
+import About from './components/About';
 // We can use this JS and put values in the following JSX
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
     <Navbar title = "TextConverter" aboutText = "About"/> 
     <div className='container my-3'>
       <TextForm heading="Enter the text below"/>
+      {/* <About /> */}
     </div>
  
     </>
