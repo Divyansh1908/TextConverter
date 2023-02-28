@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+//STATES
 // HOOKS - use feature of class without initializing a class
 // useState - Modifiy state of a function based component
 // text is the variable store - Enter text here and whenver I update the text use SetText, setCount
@@ -8,11 +9,15 @@ import React, {useState} from 'react'
 export default function TextForm(props) {
     const handleUpClick = () =>
     {
-        console.log("click hua")
+        // console.log("UP Click" + text); // taking log of the text
+        let newText = text.toUpperCase(); //converting text to uppercase
+        setText(newText) // setting the text once clicked
     }
-    const handleOnChange= () =>
+    const handleOnChange= (event) => //for typing
     {
-        console.log("change hua")
+        // console.log("ON Change");
+        setText(event.target.value); //allowing typing in the dialogue box
+
     }
     const [text, setText] = useState('Enter Text here');
     // text = "new text"; //wrong way
