@@ -27,8 +27,25 @@ export default function TextForm(props) {
     {
         // console.log("ON Change");
         setText(event.target.value); //allowing typing in the dialogue box
-
     }
+    const handleCopy = () =>
+    {
+        var text = document.getElementById("myBox");
+        text.select();
+        text.setSelectionRange(0,9999);
+        navigator.clipboard.writeText(text.value);
+    }
+
+    const changeStyle = () =>{
+        var element = document.getElementById("myBox");
+        element.style.fontFamily = "timesnewroman";
+    }
+
+    const extraSpaces = () => {
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "));
+    }
+    
     const [text, setText] = useState('Enter Text here');
     // text = "new text"; //wrong way
     // setText("new text"); //correct way
@@ -41,7 +58,10 @@ export default function TextForm(props) {
             </div>
             <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to UpperCase</button>
             <button className="btn btn-primary mx-2" onClick={handleLCClick}>Convert to LowerCase</button>
-            <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear text</button>
+            <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
+            <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
+            <button className="btn btn-primary mx-2" onClick={changeStyle}>Times New Roman Font</button>
+            <button className="btn btn-primary mx-2" onClick={extraSpaces}>Remove Extra Spaces</button>
         </div>
         <div className="container my-3">
             <h2> Your Text Summary </h2>
