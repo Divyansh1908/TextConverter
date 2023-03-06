@@ -26,6 +26,16 @@ function App() {
         setMode('dark');
         document.body.style.backgroundColor = '#074644';
         dispAlert("Dark Mode has been enabled", "success")
+        // CHANGING TITLE DYNAMICALLY
+        // document.title = 'TextConverter - Dark Mode';       if you want to change the title of the page based on dark and light mode
+
+        // FLASHING TITLE 
+        // setInterval(() => {
+        //   document.title = 'TextConverter is Amazing';  
+        // }, 2000);
+        // setInterval(() => {
+        //   document.title = 'Download Now!!';  
+        // }, 1500);
      }
      else
      {
