@@ -1,9 +1,18 @@
+import React, { Component }  from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import About from './components/About';
 import { useState } from 'react';
 import Alert from './components/Alert';
+// React Router Import
+import {
+  BrowserRouter as Router,
+  RouterProvider,
+  Route,
+  Link,
+  Routes,
+} from "react-router-dom";
 // We can use this JS and put values in the following JSX
 function App() {
   const [mode, setMode] = useState('light'); // whether dark mode is enabled or not, Initially set to light
@@ -48,13 +57,18 @@ function App() {
     //JSX Fragment - Iske andar you can put different outer elements
     //title = "textUtils" - is a prob/ attributes/ properties
     <>
-    <Navbar title = "TextConverter" aboutText = "About" mode={mode} toggleMode={toggleMode}/> 
-    <Alert alert= {alert} />
-    <div className='container my-3'>
-      <TextForm showAlert = {dispAlert} heading="Enter the text below" mode={mode} />
-      {/* <About /> */}
-    </div>
- 
+    <Router>
+      <Navbar title = "TextConverter" aboutText = "About" mode={mode} toggleMode={toggleMode}/> 
+      <Alert alert= {alert} />
+      <div className='container my-3'>
+        {/* Using React Router */}
+        <Routes>
+          {/* Use exact path for precise matching and not getting lost with similar names */}
+          <Route exact path="/about" element={<About />}/>
+          <Route exact path="/" element = {<TextForm showAlert = {dispAlert} heading="Enter the text below" mode={mode} />}/>
+        </Routes>
+      </div>
+    </Router>
     </>
   );
 } 
