@@ -58,20 +58,18 @@ function App() {
     //JSX Fragment - Iske andar you can put different outer elements
     //title = "textUtils" - is a prob/ attributes/ properties
     <>
-    {/* <Router> */}
+    <Router>
       <Navbar title = "TextConverter" aboutText = "About" mode={mode} toggleMode={toggleMode}/> 
       <Alert alert= {alert} />
       <div className='container my-3'>
         {/* Using React Router */}
-        {/* <Routes> */}
+        <Routes>
           {/* Use exact path for precise matching and not getting lost with similar names */}
-          {/* <Route exact path="/about" element={<About />}/> */}
-          {/* <Route exact path="/" element = { */}
-          <TextForm showAlert = {dispAlert} heading="Enter the text below" mode={mode} />
-          {/* }/> */}
-        {/* </Routes> */}
+          <Route exact path="/about" element={<About />}/>
+          <Route exact path="/" element = {<TextForm showAlert = {dispAlert} heading="Enter the text below" mode={mode} />}/>
+        </Routes>
       </div>
-    {/* </Router> */}
+    </Router>
     </>
   );
 } 
