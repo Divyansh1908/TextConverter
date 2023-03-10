@@ -37,6 +37,7 @@ export default function TextForm(props) {
         text.select();
         text.setSelectionRange(0,9999);
         navigator.clipboard.writeText(text.value);
+        document.getSelection().removeAllRanges();
         props.showAlert("Text Copied", "success");
     }
 
@@ -62,16 +63,16 @@ export default function TextForm(props) {
             <div className="mb-3">
                 <textarea className="form-control" value={text} style={{backgroundColor: props.mode === 'light'? 'white':'#6c7272', color: props.mode === 'light'? 'black':'white'}} onChange={handleOnChange} id="myBox" rows="17"></textarea>
             </div>
-            <button className="btn btn-success mx-2" onClick={handleUpClick}>Convert to UpperCase</button>
-            <button className="btn btn-success mx-2" onClick={handleLCClick}>Convert to LowerCase</button>
-            <button className="btn btn-success mx-2" onClick={handleClearClick}>Clear Text</button>
-            <button className="btn btn-success mx-2" onClick={handleCopy}>Copy Text</button>
-            <button className="btn btn-success mx-2" onClick={changeStyle}>Times New Roman Font</button>
-            <button className="btn btn-success mx-2" onClick={extraSpaces}>Remove Extra Spaces</button>
+            <button disabled={text.length===0} className="btn btn-success mx-2 my-2" onClick={handleUpClick}>Convert to UpperCase</button>
+            <button disabled={text.length===0} className="btn btn-success mx-2 my-2" onClick={handleLCClick}>Convert to LowerCase</button>
+            <button disabled={text.length===0} className="btn btn-success mx-2 my-2" onClick={handleClearClick}>Clear Text</button>
+            <button disabled={text.length===0} className="btn btn-success mx-2 my-2" onClick={handleCopy}>Copy Text</button>
+            <button disabled={text.length===0} className="btn btn-success mx-2 my-2" onClick={changeStyle}>Times New Roman Font</button>
+            <button disabled={text.length===0} className="btn btn-success mx-2 my-2" onClick={extraSpaces}>Remove Extra Spaces</button>
         </div>
         <div className="container my-3" style={{color: props.mode === 'light'? 'black':'white'}}>
             <h2> Your Text Summary </h2>
-            <p> <b>{text.split(" ").length} </b> words and <b>{text.length}</b> characters</p>
+            <p> <b>{text.split(" ").filter((element)=>{return element.length!==0}).length} </b> words and <b>{text.length}</b> characters</p>
             <p> <b>{text.length*0.008}</b> Minutes to read</p>
             <h2> Preview </h2>
             <p>{text.length>0?text:"Enter Something in the Text Box to Preview"}</p>

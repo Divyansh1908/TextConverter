@@ -65,8 +65,8 @@ function App() {
         {/* Using React Router */}
         <Routes>
           {/* Use exact path for precise matching and not getting lost with similar names */}
-          <Route exact path="/about" element={<About />}/>
-          <Route exact path="/" element = {<TextForm showAlert = {dispAlert} heading="Enter the text below" mode={mode} />}/>
+          <Route exact path="/about" element={<About mode={mode}/>}/>
+          <Route exact path="/" element = {<TextForm showAlert = {dispAlert} heading="TextConverter - A TextAnalysing and Modifying tool. TRY IT!!" mode={mode} />}/>
         </Routes>
       </div>
     </Router>
